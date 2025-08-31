@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/api/users/**
+
+springdoc:
+  swagger-ui:
+    urls-path: /v3/api-docs
+  api-docs:
+    path: /v3/api-docs
+  webjars:
+    prefix: /webjars
