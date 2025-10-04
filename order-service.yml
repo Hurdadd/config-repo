@@ -1,0 +1,23 @@
+
+
+spring:
+  security:
+      oauth2:
+        resourceserver:
+          jwt:
+            issuer-uri: http://localhost:8180/realms/bnpl-platform
+
+  application:
+    name: order-service
+  server:
+    port: 8981
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: order-service
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
