@@ -1,18 +1,37 @@
+server:
+  port: 8085
+
 spring:
-  application:
-    name: fraud-service
   datasource:
-    url: jdbc:clickhouse://localhost:8123/fraud-service
+    url: jdbc:clickhouse://localhost:8123/frauddb
     username: bnpl_user
     password: bnpl_pass
     driver-class-name: com.clickhouse.jdbc.ClickHouseDriver
-
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.MySQLDialect
+    show-sql: true
+    properties:
+      hibernate.jdbc.batch_size: 50
   flyway:
     enabled: true
     baseline-on-migrate: true
     locations: classpath:db/migration
     validate-on-migrate: true
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    org.hibernate.SQL: INFO
+    org.hibernate.type.descriptor.sql: WARN
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
