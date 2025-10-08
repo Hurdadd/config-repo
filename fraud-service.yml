@@ -2,12 +2,11 @@ server:
   port: 8085
 
 spring:
-  spring:
-    datasource:
-      url: jdbc:clickhouse://localhost:8123/frauddb?compress=0
-      username: bnpl_user
-      password: bnpl_pass
-      driver-class-name: com.clickhouse.jdbc.ClickHouseDriver
+  datasource:
+    url: jdbc:clickhouse://localhost:8123/frauddb?compress=0
+    username: bnpl_user
+    password: bnpl_pass
+    driver-class-name: com.clickhouse.jdbc.ClickHouseDriver
 
     jpa:
       database-platform: org.hibernate.dialect.GenericDialect
