@@ -82,9 +82,10 @@ management:
   tracing:
     sampling:
       probability: 1.0
-  zipkin:
-    tracing:
-      endpoint: http://zipkin:9411/api/v2/spans
+    exporter:
+      zipkin:
+        endpoint: http://localhost:9411/api/v2/spans
+
 http:
   client:
     connect-timeout-ms: 1000
